@@ -14,7 +14,7 @@ import com.android.tools.smali.dexlib2.iface.value.StringEncodedValue
  * - MainFeedCSRDataLoaderImpl.maybeDoAsyncAdsTailLoad -> X.1wV.A08(...): V
  * - FeedCSRAdChannelControllerImpl converter -> X.bZU.A00(...): X.3JJ
  * - FeedAsyncAdsController -> X.3JX.A0F(...): X.6Ke
- * - X.1vv.addNewEdgeToCollection(...): final SPONSORED/PROMOTION/SHOWCASE edge guard
+ * - X.1vv.addNewEdgeToCollection(...): final sponsored/recommendation edge guard
  * - GraphQLFBMultiAdsFeedUnit.A00(): sponsored-data fallback
  *
  * Reels/video/commercial-break blocking intentionally lives in the separate
@@ -90,7 +90,7 @@ private val multiAdsSponsoredData = feedExactMethod(
 @Suppress("unused")
 val blockFacebookFeedAds573Patch = bytecodePatch(
     name = "Block Facebook Feed ads and suggested posts (573)",
-    description = "Blocks sponsored, promoted, and suggested Feed posts in Facebook 573 without touching Reels or Stories.",
+    description = "Blocks sponsored, promoted, and Facebook-recommended Feed posts in version 573 without touching Reels or Stories.",
     default = true,
 ) {
     compatibleWith(COMPATIBILITY_FACEBOOK_573)
@@ -133,6 +133,21 @@ val blockFacebookFeedAds573Patch = bytecodePatch(
                 sget-object v2, Lcom/crossapp/graphql/facebook/enums/GraphQLFeedStoryCategory;->A0I:Lcom/crossapp/graphql/facebook/enums/GraphQLFeedStoryCategory;
                 if-eq v1, v2, :froggo_feedads573_drop_edge
                 sget-object v2, Lcom/crossapp/graphql/facebook/enums/GraphQLFeedStoryCategory;->A0J:Lcom/crossapp/graphql/facebook/enums/GraphQLFeedStoryCategory;
+                if-eq v1, v2, :froggo_feedads573_drop_edge
+
+                # Facebook marks Follow-style recommended stories with this boolean.
+                invoke-virtual {v0}, Lcom/facebook/graphql/model/GraphQLFeedUnitEdge;->BO4()LX/3S1;
+                move-result-object v1
+                instance-of v2, v1, Lcom/facebook/graphql/model/GraphQLStory;
+                if-eqz v2, :froggo_feedads573_keep_edge
+                check-cast v1, Lcom/facebook/graphql/model/GraphQLStory;
+                invoke-virtual {v1}, Lcom/facebook/graphql/model/GraphQLStory;->A0d()LX/41R;
+                move-result-object v1
+                if-eqz v1, :froggo_feedads573_keep_edge
+                const v2, 0x6ca24bc9
+                invoke-virtual {v1, v2}, Lcom/facebook/graphql/modelutil/BaseModelWithTree;->getCachedBoolean(I)Z
+                move-result v1
+                const/4 v2, 0x1
                 if-eq v1, v2, :froggo_feedads573_drop_edge
                 goto :froggo_feedads573_keep_edge
 
