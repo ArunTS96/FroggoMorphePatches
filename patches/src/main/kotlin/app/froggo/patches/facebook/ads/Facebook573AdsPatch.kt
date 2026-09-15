@@ -14,6 +14,7 @@ import com.android.tools.smali.dexlib2.iface.value.StringEncodedValue
  * - MainFeedCSRDataLoaderImpl.maybeDoAsyncAdsTailLoad -> X.1wV.A08(...): V
  * - FeedCSRAdChannelControllerImpl converter -> X.bZU.A00(...): X.3JJ
  * - FeedAsyncAdsController -> X.3JX.A0F(...): X.6Ke
+ * - X.1cV.A02(...): route native Home requests to Facebook's Following Feed
  * - X.1vv.addNewEdgeToCollection(...): final sponsored/recommendation edge guard
  * - GraphQLFBMultiAdsFeedUnit.A00(): sponsored-data fallback
  *
@@ -82,6 +83,24 @@ private val feedEdgeInsertion = feedExactMethod(
     ),
 )
 
+private val nativeNewsFeedParams = feedExactMethod(
+    "LX/1cV;",
+    "A02",
+    listOf(
+        "LX/1cP;",
+        "Lcom/facebook/api/feedtype/FeedType;",
+        "Lcom/facebook/auth/usersession/FbUserSession;",
+        "LX/1cV;",
+        "LX/5OW;",
+        "LX/0y3;",
+        "LX/FlR;",
+        "Ljava/lang/Boolean;",
+        "Ljava/lang/Boolean;",
+        "I",
+        "I",
+    ),
+)
+
 private val multiAdsSponsoredData = feedExactMethod(
     "Lcom/facebook/graphql/model/GraphQLFBMultiAdsFeedUnit;",
     "A00",
@@ -89,8 +108,8 @@ private val multiAdsSponsoredData = feedExactMethod(
 
 @Suppress("unused")
 val blockFacebookFeedAds573Patch = bytecodePatch(
-    name = "Block Facebook Feed ads and suggested posts (573)",
-    description = "Blocks sponsored, promoted, and Facebook-recommended Feed posts in version 573 without touching Reels or Stories.",
+    name = "Block Facebook Feed ads and use Following Feed (573)",
+    description = "Blocks ads and makes Home use Facebook’s Following Feed, so it does not request posts from unfollowed accounts.",
     default = true,
 ) {
     compatibleWith(COMPATIBILITY_FACEBOOK_573)
@@ -120,6 +139,19 @@ val blockFacebookFeedAds573Patch = bytecodePatch(
                 const/4 v2, 0x0
                 invoke-direct {v0, v1, v2}, LX/6Ke;-><init>(Lcom/google/common/collect/ImmutableList;Ljava/lang/String;)V
                 return-object v0
+            """.trimIndent(),
+        )
+        nativeNewsFeedParams.method.addInstructions(
+            0,
+            """
+                # native_newsfeed -> following_feed. Other Feed types remain unchanged.
+                move-object/from16 v0, p1
+                sget-object v1, Lcom/facebook/api/feedtype/FeedType;->A0g:Lcom/facebook/api/feedtype/FeedType;
+                if-ne v0, v1, :froggo_following_feed573_keep_type
+                sget-object v0, Lcom/facebook/api/feedtype/FeedType;->A0P:Lcom/facebook/api/feedtype/FeedType;
+                move-object/from16 p1, v0
+
+                :froggo_following_feed573_keep_type
             """.trimIndent(),
         )
         feedEdgeInsertion.method.addInstructions(
