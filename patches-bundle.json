@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-09-15T15:07:20",
-  "description": "## [1.0.2](https://github.com/ArunTS96/FroggoMorphePatches/compare/v1.0.1...v1.0.2) (2026-09-15)\n\n### 🐛 Bug Fixes\n\n* hide Follow recommendations in Facebook feed ([844c2bc](https://github.com/ArunTS96/FroggoMorphePatches/commit/844c2bcbb17b95a2bdb54cad61b5c696e13d70db))",
-  "download_url": "https://github.com/ArunTS96/FroggoMorphePatches/releases/download/v1.0.2/patches-1.0.2.mpp",
+  "created_at": "2026-09-15T17:00:38",
+  "description": "## [1.0.3](https://github.com/ArunTS96/FroggoMorphePatches/compare/v1.0.2...v1.0.3) (2026-09-15)\n\n### 🐛 Bug Fixes\n\n* use Following Feed for Facebook Home ([c8b3ce1](https://github.com/ArunTS96/FroggoMorphePatches/commit/c8b3ce12f09ef0f5fa432e49efd9686837fdcca4))",
+  "download_url": "https://github.com/ArunTS96/FroggoMorphePatches/releases/download/v1.0.3/patches-1.0.3.mpp",
   "signature_download_url": "",
-  "version": "1.0.2"
+  "version": "1.0.3"
 }

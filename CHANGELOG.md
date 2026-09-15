@@ -1,3 +1,9 @@
+## [1.0.3](https://github.com/ArunTS96/FroggoMorphePatches/compare/v1.0.2...v1.0.3) (2026-09-15)
+
+### 🐛 Bug Fixes
+
+* use Following Feed for Facebook Home ([c8b3ce1](https://github.com/ArunTS96/FroggoMorphePatches/commit/c8b3ce12f09ef0f5fa432e49efd9686837fdcca4))
+
 ## [1.0.2](https://github.com/ArunTS96/FroggoMorphePatches/compare/v1.0.1...v1.0.2) (2026-09-15)
 
 ### 🐛 Bug Fixes
