@@ -1,3 +1,9 @@
+## [1.0.1](https://github.com/ArunTS96/FroggoMorphePatches/compare/v1.0.0...v1.0.1) (2026-09-15)
+
+### 🐛 Bug Fixes
+
+* prevent Facebook suggested-post patch crash ([3cb69e8](https://github.com/ArunTS96/FroggoMorphePatches/commit/3cb69e805faab36d091c0560fe329dd20e06d31d))
+
 ## 1.0.0 (2026-09-15)
 
 ### 🐛 Bug Fixes

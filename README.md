@@ -15,9 +15,9 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.0.0](https://github.com/ArunTS96/FroggoMorphePatches/releases/tag/v1.0.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;6 patches total
+> **[v1.0.1](https://github.com/ArunTS96/FroggoMorphePatches/releases/tag/v1.0.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;5 patches total
 <details open>
-<summary>📦 Facebook&nbsp;&nbsp;•&nbsp;&nbsp;6 patches</summary>
+<summary>📦 Facebook&nbsp;&nbsp;•&nbsp;&nbsp;5 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -27,12 +27,11 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
-| [Block Facebook Feed ads (573)](#block-facebook-feed-ads-573) | Blocks sponsored and promoted units in the Facebook 573 Feed without touching Reels or Stories. |  |
+| [Block Facebook Feed ads and suggested posts (573)](#block-facebook-feed-ads-and-suggested-posts-573) | Blocks sponsored, promoted, and suggested Feed posts in Facebook 573 without touching Reels or Stories. |  |
 | [Block Facebook Reels ads (573)](#block-facebook-reels-ads-573) | Blocks sponsored Reels in the swipe feed plus Reels/video banners, video ads, and commercial breaks. |  |
 | [Block Facebook Story ads (573)](#block-facebook-story-ads-573) | Filters Story ad buckets only at the concrete X68 provider return boundary. |  |
 | [Block Facebook automatic refresh (573)](#block-facebook-automatic-refresh-573) | Suppresses lifecycle feed refresh while preserving explicit refresh paths. |  |
 | [Download Facebook Media (573)](#download-facebook-media-573) | Adds direct downloads for the visible Story, Reel, and video media through MediaStore. | • Facebook image folder<br>• Facebook video folder |
-| [Hide Facebook suggested posts (573)](#hide-facebook-suggested-posts-573) | Removes Facebook's in-feed recommended posts while preserving organic posts from friends and followed sources. |  |
 
 </details>
 

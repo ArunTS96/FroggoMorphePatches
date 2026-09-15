@@ -1,10 +1,10 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "patches": [
     {
-      "name": "Block Facebook Feed ads (573)",
-      "description": "Blocks sponsored and promoted units in the Facebook 573 Feed without touching Reels or Stories.",
+      "name": "Block Facebook Feed ads and suggested posts (573)",
+      "description": "Blocks sponsored, promoted, and suggested Feed posts in Facebook 573 without touching Reels or Stories.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -164,34 +164,6 @@
           }
         }
       ]
-    },
-    {
-      "name": "Hide Facebook suggested posts (573)",
-      "description": "Removes Facebook's in-feed recommended posts while preserving organic posts from friends and followed sources.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.facebook.katana",
-          "name": "Facebook",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#1877F2",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "573.0.0.37.74",
-              "versionCodes": {
-                "ARM64_V8A": 473623755
-              },
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
     }
   ]
 }
