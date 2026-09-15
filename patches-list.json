@@ -1,10 +1,10 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "patches": [
     {
       "name": "Block Facebook Feed ads and suggested posts (573)",
-      "description": "Blocks sponsored, promoted, and suggested Feed posts in Facebook 573 without touching Reels or Stories.",
+      "description": "Blocks sponsored, promoted, and Facebook-recommended Feed posts in version 573 without touching Reels or Stories.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [

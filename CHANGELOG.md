@@ -1,3 +1,9 @@
+## [1.0.2](https://github.com/ArunTS96/FroggoMorphePatches/compare/v1.0.1...v1.0.2) (2026-09-15)
+
+### 🐛 Bug Fixes
+
+* hide Follow recommendations in Facebook feed ([844c2bc](https://github.com/ArunTS96/FroggoMorphePatches/commit/844c2bcbb17b95a2bdb54cad61b5c696e13d70db))
+
 ## [1.0.1](https://github.com/ArunTS96/FroggoMorphePatches/compare/v1.0.0...v1.0.1) (2026-09-15)
 
 ### 🐛 Bug Fixes

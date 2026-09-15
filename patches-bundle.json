@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-09-15T13:29:31",
-  "description": "## [1.0.1](https://github.com/ArunTS96/FroggoMorphePatches/compare/v1.0.0...v1.0.1) (2026-09-15)\n\n### 🐛 Bug Fixes\n\n* prevent Facebook suggested-post patch crash ([3cb69e8](https://github.com/ArunTS96/FroggoMorphePatches/commit/3cb69e805faab36d091c0560fe329dd20e06d31d))",
-  "download_url": "https://github.com/ArunTS96/FroggoMorphePatches/releases/download/v1.0.1/patches-1.0.1.mpp",
+  "created_at": "2026-09-15T15:07:20",
+  "description": "## [1.0.2](https://github.com/ArunTS96/FroggoMorphePatches/compare/v1.0.1...v1.0.2) (2026-09-15)\n\n### 🐛 Bug Fixes\n\n* hide Follow recommendations in Facebook feed ([844c2bc](https://github.com/ArunTS96/FroggoMorphePatches/commit/844c2bcbb17b95a2bdb54cad61b5c696e13d70db))",
+  "download_url": "https://github.com/ArunTS96/FroggoMorphePatches/releases/download/v1.0.2/patches-1.0.2.mpp",
   "signature_download_url": "",
-  "version": "1.0.1"
+  "version": "1.0.2"
 }
