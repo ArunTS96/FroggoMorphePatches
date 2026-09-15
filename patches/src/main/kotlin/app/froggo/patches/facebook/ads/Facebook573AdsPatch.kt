@@ -7,15 +7,14 @@ import app.morphe.patcher.patch.bytecodePatch
 import com.android.tools.smali.dexlib2.iface.value.StringEncodedValue
 
 /*
- * Facebook 573.0.0.37.74 / 473623755 - Feed ads and in-feed recommendations.
+ * Facebook 573.0.0.37.74 / 473623755 - Feed ads and Follow recommendations.
  *
  * Proven seams:
  * - MainFeedCSRDataLoaderImpl$maybeDoAsyncAdsTailLoad$1 -> run(): V
  * - MainFeedCSRDataLoaderImpl.maybeDoAsyncAdsTailLoad -> X.1wV.A08(...): V
  * - FeedCSRAdChannelControllerImpl converter -> X.bZU.A00(...): X.3JJ
  * - FeedAsyncAdsController -> X.3JX.A0F(...): X.6Ke
- * - X.1cV.A02(...): route native Home requests to Facebook's Following Feed
- * - X.1vv.addNewEdgeToCollection(...): final sponsored/recommendation edge guard
+ * - X.1vv.addNewEdgeToCollection(...): final sponsored/Follow edge guard
  * - GraphQLFBMultiAdsFeedUnit.A00(): sponsored-data fallback
  *
  * Reels/video/commercial-break blocking intentionally lives in the separate
@@ -83,24 +82,6 @@ private val feedEdgeInsertion = feedExactMethod(
     ),
 )
 
-private val nativeNewsFeedParams = feedExactMethod(
-    "LX/1cV;",
-    "A02",
-    listOf(
-        "LX/1cP;",
-        "Lcom/facebook/api/feedtype/FeedType;",
-        "Lcom/facebook/auth/usersession/FbUserSession;",
-        "LX/1cV;",
-        "LX/5OW;",
-        "LX/0y3;",
-        "LX/FlR;",
-        "Ljava/lang/Boolean;",
-        "Ljava/lang/Boolean;",
-        "I",
-        "I",
-    ),
-)
-
 private val multiAdsSponsoredData = feedExactMethod(
     "Lcom/facebook/graphql/model/GraphQLFBMultiAdsFeedUnit;",
     "A00",
@@ -108,8 +89,8 @@ private val multiAdsSponsoredData = feedExactMethod(
 
 @Suppress("unused")
 val blockFacebookFeedAds573Patch = bytecodePatch(
-    name = "Block Facebook Feed ads and use Following Feed (573)",
-    description = "Blocks ads and makes Home use Facebook’s Following Feed, so it does not request posts from unfollowed accounts.",
+    name = "Block Facebook Feed ads and suggested posts (573)",
+    description = "Keeps Facebook’s ranked Home feed while blocking ads and stories that expose a Follow action for an unfollowed profile.",
     default = true,
 ) {
     compatibleWith(COMPATIBILITY_FACEBOOK_573)
@@ -141,19 +122,6 @@ val blockFacebookFeedAds573Patch = bytecodePatch(
                 return-object v0
             """.trimIndent(),
         )
-        nativeNewsFeedParams.method.addInstructions(
-            0,
-            """
-                # native_newsfeed -> following_feed. Other Feed types remain unchanged.
-                move-object/from16 v0, p1
-                sget-object v1, Lcom/facebook/api/feedtype/FeedType;->A0g:Lcom/facebook/api/feedtype/FeedType;
-                if-ne v0, v1, :froggo_following_feed573_keep_type
-                sget-object v0, Lcom/facebook/api/feedtype/FeedType;->A0P:Lcom/facebook/api/feedtype/FeedType;
-                move-object/from16 p1, v0
-
-                :froggo_following_feed573_keep_type
-            """.trimIndent(),
-        )
         feedEdgeInsertion.method.addInstructions(
             0,
             """
@@ -164,23 +132,23 @@ val blockFacebookFeedAds573Patch = bytecodePatch(
                 if-eq v1, v2, :froggo_feedads573_drop_edge
                 sget-object v2, Lcom/crossapp/graphql/facebook/enums/GraphQLFeedStoryCategory;->A0I:Lcom/crossapp/graphql/facebook/enums/GraphQLFeedStoryCategory;
                 if-eq v1, v2, :froggo_feedads573_drop_edge
-                sget-object v2, Lcom/crossapp/graphql/facebook/enums/GraphQLFeedStoryCategory;->A0J:Lcom/crossapp/graphql/facebook/enums/GraphQLFeedStoryCategory;
-                if-eq v1, v2, :froggo_feedads573_drop_edge
-
-                # Facebook marks Follow-style recommended stories with this boolean.
+                # The ranked Home feed's post-header plugin requires this action link
+                # and its should_use_blue_link flag before rendering the blue Follow action.
                 invoke-virtual {v0}, Lcom/facebook/graphql/model/GraphQLFeedUnitEdge;->BO4()LX/3S1;
                 move-result-object v1
                 instance-of v2, v1, Lcom/facebook/graphql/model/GraphQLStory;
                 if-eqz v2, :froggo_feedads573_keep_edge
                 check-cast v1, Lcom/facebook/graphql/model/GraphQLStory;
-                invoke-virtual {v1}, Lcom/facebook/graphql/model/GraphQLStory;->A0d()LX/41R;
+                invoke-virtual {v1}, Lcom/facebook/graphql/model/GraphQLStory;->A0j()Lcom/google/common/collect/ImmutableList;
+                move-result-object v2
+                const-string v1, "FollowProfileActionLink"
+                invoke-static {v1, v2}, LX/2m4;->A05(Ljava/lang/String;Ljava/util/List;)LX/41Q;
                 move-result-object v1
                 if-eqz v1, :froggo_feedads573_keep_edge
-                const v2, 0x6ca24bc9
+                const v2, 0x18b7967b
                 invoke-virtual {v1, v2}, Lcom/facebook/graphql/modelutil/BaseModelWithTree;->getCachedBoolean(I)Z
                 move-result v1
-                const/4 v2, 0x1
-                if-eq v1, v2, :froggo_feedads573_drop_edge
+                if-nez v1, :froggo_feedads573_drop_edge
                 goto :froggo_feedads573_keep_edge
 
                 :froggo_feedads573_drop_edge
