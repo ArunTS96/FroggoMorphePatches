@@ -1,3 +1,9 @@
+## [1.0.4](https://github.com/ArunTS96/FroggoMorphePatches/compare/v1.0.3...v1.0.4) (2026-09-15)
+
+### 🐛 Bug Fixes
+
+* **facebook:** keep ranked Home while hiding Follow suggestions ([0327506](https://github.com/ArunTS96/FroggoMorphePatches/commit/03275060e5ffc9fff47658fa6cc037baae53bbaa))
+
 ## [1.0.3](https://github.com/ArunTS96/FroggoMorphePatches/compare/v1.0.2...v1.0.3) (2026-09-15)
 
 ### 🐛 Bug Fixes

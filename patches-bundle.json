@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-09-15T17:00:38",
-  "description": "## [1.0.3](https://github.com/ArunTS96/FroggoMorphePatches/compare/v1.0.2...v1.0.3) (2026-09-15)\n\n### 🐛 Bug Fixes\n\n* use Following Feed for Facebook Home ([c8b3ce1](https://github.com/ArunTS96/FroggoMorphePatches/commit/c8b3ce12f09ef0f5fa432e49efd9686837fdcca4))",
-  "download_url": "https://github.com/ArunTS96/FroggoMorphePatches/releases/download/v1.0.3/patches-1.0.3.mpp",
+  "created_at": "2026-09-15T18:26:51",
+  "description": "## [1.0.4](https://github.com/ArunTS96/FroggoMorphePatches/compare/v1.0.3...v1.0.4) (2026-09-15)\n\n### 🐛 Bug Fixes\n\n* **facebook:** keep ranked Home while hiding Follow suggestions ([0327506](https://github.com/ArunTS96/FroggoMorphePatches/commit/03275060e5ffc9fff47658fa6cc037baae53bbaa))",
+  "download_url": "https://github.com/ArunTS96/FroggoMorphePatches/releases/download/v1.0.4/patches-1.0.4.mpp",
   "signature_download_url": "",
-  "version": "1.0.3"
+  "version": "1.0.4"
 }

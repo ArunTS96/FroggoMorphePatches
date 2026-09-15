@@ -15,7 +15,7 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.0.3](https://github.com/ArunTS96/FroggoMorphePatches/releases/tag/v1.0.3)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;5 patches total
+> **[v1.0.4](https://github.com/ArunTS96/FroggoMorphePatches/releases/tag/v1.0.4)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;5 patches total
 <details open>
 <summary>📦 Facebook&nbsp;&nbsp;•&nbsp;&nbsp;5 patches</summary>
 <br>
@@ -27,7 +27,7 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
-| [Block Facebook Feed ads and use Following Feed (573)](#block-facebook-feed-ads-and-use-following-feed-573) | Blocks ads and makes Home use Facebook’s Following Feed, so it does not request posts from unfollowed accounts. |  |
+| [Block Facebook Feed ads and suggested posts (573)](#block-facebook-feed-ads-and-suggested-posts-573) | Keeps Facebook’s ranked Home feed while blocking ads and stories that expose a Follow action for an unfollowed profile. |  |
 | [Block Facebook Reels ads (573)](#block-facebook-reels-ads-573) | Blocks sponsored Reels in the swipe feed plus Reels/video banners, video ads, and commercial breaks. |  |
 | [Block Facebook Story ads (573)](#block-facebook-story-ads-573) | Filters Story ad buckets only at the concrete X68 provider return boundary. |  |
 | [Block Facebook automatic refresh (573)](#block-facebook-automatic-refresh-573) | Suppresses lifecycle feed refresh while preserving explicit refresh paths. |  |
