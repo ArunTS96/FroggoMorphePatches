@@ -16,7 +16,7 @@ import app.morphe.patcher.patch.bytecodePatch
  */
 private val suggestedFeedEdgeInsertion = Fingerprint(
     parameters = listOf(
-        "Lcom/google/common/collect/ImmutableList$Builder;",
+        "Lcom/google/common/collect/ImmutableList\$Builder;",
         "Lcom/facebook/graphql/model/GraphQLFeedUnitEdge;",
         "LX/1cP;",
     ),
