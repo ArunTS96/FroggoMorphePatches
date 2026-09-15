@@ -7,14 +7,14 @@ import app.morphe.patcher.patch.bytecodePatch
 import com.android.tools.smali.dexlib2.iface.value.StringEncodedValue
 
 /*
- * Facebook 573.0.0.37.74 / 473623755 - Feed ads only.
+ * Facebook 573.0.0.37.74 / 473623755 - Feed ads and in-feed recommendations.
  *
  * Proven seams:
  * - MainFeedCSRDataLoaderImpl$maybeDoAsyncAdsTailLoad$1 -> run(): V
  * - MainFeedCSRDataLoaderImpl.maybeDoAsyncAdsTailLoad -> X.1wV.A08(...): V
  * - FeedCSRAdChannelControllerImpl converter -> X.bZU.A00(...): X.3JJ
  * - FeedAsyncAdsController -> X.3JX.A0F(...): X.6Ke
- * - X.1vv.addNewEdgeToCollection(...): final SPONSORED/PROMOTION edge guard
+ * - X.1vv.addNewEdgeToCollection(...): final SPONSORED/PROMOTION/SHOWCASE edge guard
  * - GraphQLFBMultiAdsFeedUnit.A00(): sponsored-data fallback
  *
  * Reels/video/commercial-break blocking intentionally lives in the separate
@@ -89,8 +89,8 @@ private val multiAdsSponsoredData = feedExactMethod(
 
 @Suppress("unused")
 val blockFacebookFeedAds573Patch = bytecodePatch(
-    name = "Block Facebook Feed ads (573)",
-    description = "Blocks sponsored and promoted units in the Facebook 573 Feed without touching Reels or Stories.",
+    name = "Block Facebook Feed ads and suggested posts (573)",
+    description = "Blocks sponsored, promoted, and suggested Feed posts in Facebook 573 without touching Reels or Stories.",
     default = true,
 ) {
     compatibleWith(COMPATIBILITY_FACEBOOK_573)
@@ -131,6 +131,8 @@ val blockFacebookFeedAds573Patch = bytecodePatch(
                 sget-object v2, Lcom/crossapp/graphql/facebook/enums/GraphQLFeedStoryCategory;->A0K:Lcom/crossapp/graphql/facebook/enums/GraphQLFeedStoryCategory;
                 if-eq v1, v2, :froggo_feedads573_drop_edge
                 sget-object v2, Lcom/crossapp/graphql/facebook/enums/GraphQLFeedStoryCategory;->A0I:Lcom/crossapp/graphql/facebook/enums/GraphQLFeedStoryCategory;
+                if-eq v1, v2, :froggo_feedads573_drop_edge
+                sget-object v2, Lcom/crossapp/graphql/facebook/enums/GraphQLFeedStoryCategory;->A0J:Lcom/crossapp/graphql/facebook/enums/GraphQLFeedStoryCategory;
                 if-eq v1, v2, :froggo_feedads573_drop_edge
                 goto :froggo_feedads573_keep_edge
 
