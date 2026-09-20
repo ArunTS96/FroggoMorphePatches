@@ -189,7 +189,7 @@ val facebook573AiFilterSuggestedDiagnosticsPatch = bytecodePatch(
 val hideFacebookSuggestedForYou573Patch = bytecodePatch(
     name = "Hide Facebook suggested posts (573)",
     description = "Keeps Facebook's ranked Home feed while hiding suggested posts and Follow recommendations.",
-    default = false,
+    default = true,
 ) {
     compatibleWith(COMPATIBILITY_FACEBOOK_573)
 
