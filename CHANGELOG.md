@@ -1,3 +1,10 @@
+## [1.1.0](https://github.com/ArunTS96/FroggoMorphePatches/compare/v1.0.4...v1.1.0) (2026-09-20)
+
+### ✨ New Features
+
+* **facebook:** enable hide suggested posts patch by default ([b3edaaf](https://github.com/ArunTS96/FroggoMorphePatches/commit/b3edaafb7c8d57c9c926c6fd497424417b8fadaa))
+* **facebook:** hide suggested posts and Follow recommendations in feed ([d84f4ae](https://github.com/ArunTS96/FroggoMorphePatches/commit/d84f4ae2b60291bccd84c45f0c50576cb6b5c8f9))
+
 ## [1.4.0-dev.2](https://github.com/SapitoSucio/FroggoMorphePatches/compare/v1.4.0-dev.1...v1.4.0-dev.2) (2026-09-07)
 
 ### ✨ New Features

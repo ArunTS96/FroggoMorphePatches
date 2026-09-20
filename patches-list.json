@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.4.0-dev.2",
+  "version": "1.1.0",
   "patches": [
     {
       "name": "Block Facebook Feed ads (573)",
@@ -336,6 +336,34 @@
       "name": "Hide Facebook AI content (573)",
       "description": "Filters Feed posts carrying Facebook's GenAI transparency metadata (Contenido de IA).",
       "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.facebook.katana",
+          "name": "Facebook",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#1877F2",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "573.0.0.37.74",
+              "versionCodes": {
+                "ARM64_V8A": 473623755
+              },
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hide Facebook suggested posts (573)",
+      "description": "Keeps Facebook's ranked Home feed while hiding suggested posts and Follow recommendations.",
+      "default": true,
       "dependencies": [],
       "compatiblePackages": [
         {

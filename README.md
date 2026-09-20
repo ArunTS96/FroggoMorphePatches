@@ -15,9 +15,9 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.4.0-dev.2](https://github.com/SapitoSucio/FroggoMorphePatches/releases/tag/v1.4.0-dev.2)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;12 patches total
+> **[v1.1.0](https://github.com/ArunTS96/FroggoMorphePatches/releases/tag/v1.1.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;13 patches total
 <details open>
-<summary>📦 Facebook&nbsp;&nbsp;•&nbsp;&nbsp;11 patches</summary>
+<summary>📦 Facebook&nbsp;&nbsp;•&nbsp;&nbsp;12 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -37,6 +37,7 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 | [Facebook 573 AI filter + recommendation diagnostics](#facebook-573-ai-filter-recommendation-diagnostics) | Filters detected AI Feed stories and logs structural metadata for DiscoverFeedUnit recommendation candidates in one bytecode injection. |  |
 | [Facebook 573 Feed recommendation diagnostics](#facebook-573-feed-recommendation-diagnostics) | Logs structural metadata for injected Feed stories without filtering them. |  |
 | [Hide Facebook AI content (573)](#hide-facebook-ai-content-573) | Filters Feed posts carrying Facebook's GenAI transparency metadata (Contenido de IA). |  |
+| [Hide Facebook suggested posts (573)](#hide-facebook-suggested-posts-573) | Keeps Facebook's ranked Home feed while hiding suggested posts and Follow recommendations. |  |
 | [Stop Facebook Story auto-advance (573)](#stop-facebook-story-auto-advance-573) | Leaves photo and video Stories on their completed frame until the viewer navigates manually. | • Loop Stories |
 
 </details>
